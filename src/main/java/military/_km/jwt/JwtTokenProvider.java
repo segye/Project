@@ -102,7 +102,7 @@ public class JwtTokenProvider {
         Claims claims = parse(freshToken);
 
         if (!validateToken(freshToken) || claims.get("isRefreshToken") == null || !Boolean.TRUE.equals(claims.get("isRefreshToken"))) {
-            log.info("유요하지 않은 리프레쉬 토큰 입니다.");
+            log.info("유효하지 않은 리프레쉬 토큰 입니다.");
         }
 
         String email = claims.getSubject();
