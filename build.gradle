@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.1'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'military'
+version = '0.0.1-SNAPSHOT'
+
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'mysql:mysql-connector-java:8.0.28'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//embedded-redis
+	implementation group: 'com.github.codemonstur', name: 'embedded-redis', version: '1.4.3'
+	// email
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	// JWT
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+	implementation 'org.jetbrains:annotations:24.0.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+
+	// OAuth2
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'com.google.api-client:google-api-client:1.32.1'
+	implementation 'com.google.oauth-client:google-oauth-client:1.31.5'
+	implementation 'com.google.http-client:google-http-client-jackson2:1.39.2'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
